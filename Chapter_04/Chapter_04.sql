@@ -18,11 +18,16 @@ VALUES
     ('abc', 'abc', 'abc'),
     ('defghi', 'defghi', 'defghi');
 
-COPY char_data_types TO 'C:\YourDirectory\typetest.txt'
+COPY char_data_types TO 'C:\Users\tg715c\Documents\Python Scripts\book-practical-sql\typetest.txt'
 WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 
 -- Listing 4-2: Number data types in action
+-- Create a table called people that has an id column populated via IDENTITY
+CREATE TABLE people (
+    id integer GENERATED ALWAYS AS IDENTITY,
+    person_name varchar(100)
+);
 
 CREATE TABLE number_data_types (
     numeric_column numeric(20,5),
