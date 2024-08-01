@@ -110,6 +110,8 @@ COPY supervisor_salaries_temp (town, supervisor, salary)
 FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\supervisor_salaries.csv'
 WITH (FORMAT CSV, HEADER);
 
+SELECT * FROM supervisor_salaries_temp;
+
 INSERT INTO supervisor_salaries (town, county, supervisor, salary)
 SELECT town, 'Mills', supervisor, salary
 FROM supervisor_salaries_temp;
