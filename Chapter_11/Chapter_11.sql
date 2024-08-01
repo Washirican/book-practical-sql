@@ -19,12 +19,12 @@ CREATE TABLE acs_2014_2018_stats (
 );
 
 COPY acs_2014_2018_stats
-FROM 'C:\YourDirectory\acs_2014_2018_stats.csv'
+FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\acs_2014_2018_stats.csv'
 WITH (FORMAT CSV, HEADER);
 
 SELECT * FROM acs_2014_2018_stats;
 
--- Listing 11-2: Using corr(Y, X) to measure the relationship between 
+-- Listing 11-2: Using corr(Y, X) to measure the relationship between
 -- education and income
 
 SELECT corr(median_hh_income, pct_bachelors_higher)
@@ -126,7 +126,7 @@ SELECT
     unit_sales,
     rank() OVER (PARTITION BY category ORDER BY unit_sales DESC)
 FROM store_sales
-ORDER BY category, rank() OVER (PARTITION BY category 
+ORDER BY category, rank() OVER (PARTITION BY category
         ORDER BY unit_sales DESC);
 
 -- Listing 11-8: Creating and filling a table for Census county business pattern data
@@ -144,7 +144,7 @@ CREATE TABLE cbp_naics_72_establishments (
 );
 
 COPY cbp_naics_72_establishments
-FROM 'C:\YourDirectory\cbp_naics_72_establishments.csv'
+FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\cbp_naics_72_establishments.csv'
 WITH (FORMAT CSV, HEADER);
 
 SELECT *
@@ -160,11 +160,11 @@ SELECT
     cbp.establishments,
     pop.pop_est_2018,
     round( (cbp.establishments::numeric / pop.pop_est_2018) * 1000, 1 )
-        AS estabs_per_1000 
-FROM cbp_naics_72_establishments cbp JOIN us_counties_pop_est_2019 pop 
-    ON cbp.state_fips = pop.state_fips 
-    AND cbp.county_fips = pop.county_fips 
-WHERE pop.pop_est_2018 >= 50000 
+        AS estabs_per_1000
+FROM cbp_naics_72_establishments cbp JOIN us_counties_pop_est_2019 pop
+    ON cbp.state_fips = pop.state_fips
+    AND cbp.county_fips = pop.county_fips
+WHERE pop.pop_est_2018 >= 50000
 ORDER BY cbp.establishments::numeric / pop.pop_est_2018 DESC;
 
 -- Listing 11-10: Creating a rolling average for export data
@@ -172,12 +172,12 @@ ORDER BY cbp.establishments::numeric / pop.pop_est_2018 DESC;
 CREATE TABLE us_exports (
     year smallint,
     month smallint,
-    citrus_export_value bigint,	
+    citrus_export_value bigint,
     soybeans_export_value bigint
 );
 
 COPY us_exports
-FROM 'C:\YourDirectory\us_exports.csv'
+FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\us_exports.csv'
 WITH (FORMAT CSV, HEADER);
 
 -- View the monthly citrus data
@@ -187,11 +187,10 @@ ORDER BY year, month;
 
 -- Calculate rolling average
 SELECT year, month, citrus_export_value,
-    round(   
-       avg(citrus_export_value) 
-            OVER(ORDER BY year, month 
+    round(
+       avg(citrus_export_value)
+            OVER(ORDER BY year, month
                  ROWS BETWEEN 11 PRECEDING AND CURRENT ROW), 0)
        AS twelve_month_avg
 FROM us_exports
 ORDER BY year, month;
-

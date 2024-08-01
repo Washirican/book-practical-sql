@@ -153,7 +153,7 @@ COPY nyc_yellow_taxi_trips (
     improvement_surcharge,
     total_amount
    )
-FROM 'C:\YourDirectory\nyc_yellow_taxi_trips.csv'
+FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\nyc_yellow_taxi_trips.csv'
 WITH (FORMAT CSV, HEADER);
 
 CREATE INDEX tpep_pickup_idx
@@ -183,7 +183,7 @@ COPY
     GROUP BY trip_hour
     ORDER BY trip_hour
     )
-TO 'C:\YourDirectory\hourly_taxi_pickups.csv'
+TO 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\hourly_taxi_pickups.csv'
 WITH (FORMAT CSV, HEADER);
 
 -- Listing 12-10: Calculating median trip time by hour
@@ -240,4 +240,3 @@ SELECT segment,
        justify_interval(sum(arrival - departure)
                         OVER (ORDER BY trip_id)) AS cume_duration
 FROM train_rides;
-

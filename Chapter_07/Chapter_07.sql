@@ -245,7 +245,7 @@ CREATE TABLE us_counties_pop_est_2010 (
 );
 
 COPY us_counties_pop_est_2010
-FROM 'C:\YourDirectory\us_counties_pop_est_2010.csv'
+FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\us_counties_pop_est_2010.csv'
 WITH (FORMAT CSV, HEADER);
 
 SELECT c2019.county_name,
