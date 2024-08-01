@@ -46,7 +46,7 @@ SELECT * FROM us_counties_pop_est_2019;
 -- Windows users: Please check the Note on PAGE XXXXXX as well.
 
 COPY us_counties_pop_est_2019
-FROM 'C:\Users\tg715c\Documents\Learning\book-practical-sql\Chapter_05\us_counties_pop_est_2019.csv'
+FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_pop_est_2019.csv'
 WITH (FORMAT CSV, HEADER);
 
 -- Checking the data
