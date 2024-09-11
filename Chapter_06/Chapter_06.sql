@@ -7,9 +7,9 @@
 
 -- Listing 6-1: Basic addition, subtraction and multiplication with SQL
 
-SELECT 2 + 2;    -- addition
+SELECT 2 + 2 AS addition;    -- addition
 SELECT 9 - 1;    -- subtraction
-SELECT 3 * 4;    -- multiplication
+SELECT 3 * 4 AS result;    -- multiplication
 
 -- Listing 6-2: Integer and decimal division with SQL
 
