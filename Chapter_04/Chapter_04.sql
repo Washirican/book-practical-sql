@@ -18,7 +18,7 @@ VALUES
     ('abc', 'abc', 'abc'),
     ('defghi', 'defghi', 'defghi');
 
-COPY char_data_types TO 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\typetest.txt'
+COPY char_data_types TO 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\typetest.txt'
 WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 

@@ -9,7 +9,7 @@
 -- This is example syntax only; running it will produce an error
 
 COPY table_name
-FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\your_file.csv'
+FROM 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\your_file.csv'
 WITH (FORMAT CSV, HEADER);
 
 
@@ -46,7 +46,7 @@ SELECT * FROM us_counties_pop_est_2019;
 -- Windows users: Please check the Note on PAGE XXXXXX as well.
 
 COPY us_counties_pop_est_2019
-FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_pop_est_2019.csv'
+FROM 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_pop_est_2019.csv'
 WITH (FORMAT CSV, HEADER);
 
 -- Checking the data
@@ -79,7 +79,7 @@ CREATE TABLE supervisor_salaries (
 -- Listing 5-5: Importing salaries data from CSV to three table columns
 
 COPY supervisor_salaries (town, supervisor, salary)
-FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\supervisor_salaries.csv'
+FROM 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\Chapter_05\supervisor_salaries.csv'
 WITH (FORMAT CSV, HEADER);
 
 -- Check the data
@@ -91,7 +91,7 @@ SELECT * FROM supervisor_salaries ORDER BY id LIMIT 2;
 DELETE FROM supervisor_salaries;
 
 COPY supervisor_salaries (town, supervisor, salary)
-FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\supervisor_salaries.csv'
+FROM 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\Chapter_05\supervisor_salaries.csv'
 WITH (FORMAT CSV, HEADER)
 WHERE town = 'New Brillig';
 
@@ -107,7 +107,7 @@ CREATE TEMPORARY TABLE supervisor_salaries_temp
     (LIKE supervisor_salaries INCLUDING ALL);
 
 COPY supervisor_salaries_temp (town, supervisor, salary)
-FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\supervisor_salaries.csv'
+FROM 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\Chapter_05\supervisor_salaries.csv'
 WITH (FORMAT CSV, HEADER);
 
 SELECT * FROM supervisor_salaries_temp;
@@ -125,7 +125,7 @@ SELECT * FROM supervisor_salaries ORDER BY id LIMIT 2;
 -- Listing 5-8: Exporting an entire table with COPY
 
 COPY us_counties_pop_est_2019
-TO 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_export.txt'
+TO 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_export.txt'
 WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 
@@ -133,7 +133,7 @@ WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 COPY us_counties_pop_est_2019
     (county_name, internal_point_lat, internal_point_lon)
-TO 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_latlon_export.txt'
+TO 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_latlon_export.txt'
 WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 -- Listing 5-10: Exporting query results with COPY
@@ -143,7 +143,7 @@ COPY (
     FROM us_counties_pop_est_2019
     WHERE county_name ILIKE '%mill%'
      )
-TO 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_mill_export.csv'
+TO 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_mill_export.csv'
 WITH (FORMAT CSV, HEADER);
 
 
@@ -159,7 +159,7 @@ COPY (
 	ORDER BY births_2019 DESC
 	LIMIT 20
 	)
-TO 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_by_births_top_20.csv'
+TO 'C:\Users\Daniel\Documents\Learning (GitHub)\Books\book-practical-sql\Chapter_05\us_counties_by_births_top_20.csv'
 WITH (FORMAT CSV, HEADER);
 
 -- 3
