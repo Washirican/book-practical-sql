@@ -165,3 +165,27 @@ FROM us_counties_pop_est_2019;
 
 SELECT mode() WITHIN GROUP (ORDER BY births_2019)
 FROM us_counties_pop_est_2019;
+
+-- Try It Yourself:
+-- 1. Area of a circle
+
+
+
+-- 2. Ratio of births to deaths in each county in NYC
+SELECT county_name, 
+    state_name, 
+    births_2019 as births, 
+    deaths_2019 as deaths, 
+    births_2019::numeric/deaths_2019 as birth_death_ratio
+FROM us_counties_pop_est_2019
+WHERE state_name = 'New York'
+ORDER BY birth_death_ratio DESC;
+
+
+-- 3. Compare median county population in NY and CA
+SELECT state_name,
+       percentile_cont(0.5)
+          WITHIN GROUP (ORDER BY pop_est_2019) AS median
+FROM us_counties_pop_est_2019
+WHERE state_name IN ('New York', 'California')
+GROUP BY state_name;
