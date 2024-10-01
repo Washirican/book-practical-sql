@@ -78,6 +78,10 @@ INSERT INTO district_2035 VALUES
     (3, 'Morrison Elementary'),
     (4, 'Chase Magnet Academy'),
     (6, 'Webutuck High School');
+    
+SELECT * FROM district_2020;
+
+SELECT * FROM district_2035;
 
 -- Listing 7-4: Using JOIN
 
