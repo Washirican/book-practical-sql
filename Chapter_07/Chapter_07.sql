@@ -155,7 +155,7 @@ WHERE district_2020.id IS NULL;
 
 -- Listing 7-11: Querying specific columns in a join
 
-SELECT district_2020.id,
+SELECT district_2020.id AS d20_id,
        district_2020.school_2020,
        district_2035.school_2035
 FROM district_2020 LEFT JOIN district_2035
