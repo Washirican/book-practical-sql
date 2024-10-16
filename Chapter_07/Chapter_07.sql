@@ -279,10 +279,37 @@ ORDER BY pct_change DESC;
 
 -- Try It Yourself Exercises:
 -- 1.
+SELECT c2019.county_name,
+       c2019.state_name,
+       c2019.pop_est_2019 AS pop_2019,
+       c2010.estimates_base_2010 AS pop_2010,
+       c2019.pop_est_2019 - c2010.estimates_base_2010 AS raw_change,
+       round( (c2019.pop_est_2019::numeric - c2010.estimates_base_2010)
+           / c2010.estimates_base_2010 * 100, 1 ) AS pct_change
+FROM us_counties_pop_est_2019 AS c2019
+    JOIN us_counties_pop_est_2010 AS c2010
+ON c2019.state_fips = c2010.state_fips
+    AND c2019.county_fips = c2010.county_fips
+ORDER BY pct_change ASC;
 
 
 -- 2. 
-
+SELECT '2019' AS year, 
+  county_fips, 
+  state_fips, 
+  state_name, 
+  county_name, 
+  pop_est_2019 AS estimate
+FROM us_counties_pop_est_2019
+UNION 
+SELECT '2010' AS year, 
+  county_fips, 
+  state_fips, 
+  state_name, 
+  county_name, 
+  estimates_base_2010 AS estimate
+FROM us_counties_pop_est_2010
+ORDER BY state_fips, county_fips, year;
 
 -- 3. 
 
