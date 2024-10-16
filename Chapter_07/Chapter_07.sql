@@ -259,8 +259,10 @@ CREATE TABLE us_counties_pop_est_2010 (
 );
 
 COPY us_counties_pop_est_2010
-FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\us_counties_pop_est_2010.csv'
+FROM 'C:\Users\tg715c\Documents\Learning\book-practical-sql\Chapter_07\us_counties_pop_est_2010.csv'
 WITH (FORMAT CSV, HEADER);
+
+SELECT * FROM us_counties_pop_est_2010;
 
 SELECT c2019.county_name,
        c2019.state_name,
@@ -274,3 +276,15 @@ FROM us_counties_pop_est_2019 AS c2019
 ON c2019.state_fips = c2010.state_fips
     AND c2019.county_fips = c2010.county_fips
 ORDER BY pct_change DESC;
+
+-- Try It Yourself Exercises:
+-- 1.
+
+
+-- 2. 
+
+
+-- 3. 
+
+
+
