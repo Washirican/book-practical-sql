@@ -312,6 +312,13 @@ FROM us_counties_pop_est_2010
 ORDER BY state_fips, county_fips, year;
 
 -- 3. 
+SELECT percentile_cont(.5)
+       WITHIN GROUP (ORDER BY round( (c2019.pop_est_2019::numeric - c2010.estimates_base_2010)
+           / c2010.estimates_base_2010 * 100, 1 )) AS percentile_50th
+FROM us_counties_pop_est_2019 AS c2019
+    JOIN us_counties_pop_est_2010 AS c2010
+ON c2019.state_fips = c2010.state_fips
+    AND c2019.county_fips = c2010.county_fips;
 
 
 
