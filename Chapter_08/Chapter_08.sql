@@ -213,3 +213,28 @@ WHERE street = 'ZWICKY AVENUE';
 -- Listing 8-14: Creating a B-tree index on the new_york_addresses table
 
 CREATE INDEX street_idx ON new_york_addresses (street);
+
+-- Try It Yourself Exercise
+CREATE TABLE albums (
+    album_id bigint GENERATED ALWAYS AS IDENTITY,
+    catalog_code text NOT NULL,
+    title text NOT NULL,
+    artist text NOT NULL,
+    release_date date,
+    genre text,
+    description text,
+    CONSTRAINT album_id_key PRIMARY KEY (album_id),
+    CONSTRAINT release_date_check CHECK (release_date > '1/1/1931')
+);
+
+CREATE TABLE songs (
+    song_id bigint GENERATED ALWAYS AS IDENTITY,
+    title text NOT NULL,
+    composers text NOT NULL,
+    album_id bigint REFERENCES albums (album_id),
+    CONSTRAINT song_id_key PRIMARY KEY (song_id)
+);
+
+CREATE INDEX album_id_idx ON songs (album_id);
+
+
