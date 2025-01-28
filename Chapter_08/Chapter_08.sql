@@ -99,6 +99,14 @@ CREATE TABLE registrations (
     CONSTRAINT registration_key PRIMARY KEY (registration_id, license_id)
 );
 
+-- Adding ON DELETE CASCADE to registration table creation SQL
+CREATE TABLE registrations (
+    registration_id text,
+    registration_date date,
+    license_id text REFERENCES licenses (license_id) ON DELETE CASCADE,
+    CONSTRAINT registration_key PRIMARY KEY (registration_id, license_id)
+);
+
 INSERT INTO licenses (license_id, first_name, last_name)
 VALUES ('T229901', 'Steve', 'Rothery');
 
@@ -186,8 +194,10 @@ CREATE TABLE new_york_addresses (
 );
 
 COPY new_york_addresses
-FROM 'C:\Users\Daniel\Documents\Programming Projects (GitHub)\Books\book-practical-sql\city_of_new_york.csv'
+FROM 'C:\Users\tg715c\Documents\Learning\book-practical-sql\Chapter_08\city_of_new_york.csv'
 WITH (FORMAT CSV, HEADER);
+
+SELECT * FROM new_york_addresses;
 
 -- Listing 8-13: Benchmark queries for index performance
 
